@@ -173,10 +173,17 @@
 	
 	//seq_id,hubway_id,status,duration,start_date,strt_statn,end_date,end_statn,bike_nr,subsc_type,zip_code,birth_date,gender
 	var tripsParse = function tripsParse(d, i) {
+	    var dateArray = d.starttime.split(" ");
+	    dateArray = dateArray[0].split("-").concat(dateArray[1].split(":"));
+	    var startDate = new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4], dateArray[5]);
+	    dateArray = d.stoptime.split(" ");
+	    dateArray = dateArray[0].split("-").concat(dateArray[1].split(":"));
+	    var endDate = new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4], dateArray[5]);
+	
 	    return {
 	        duration: d.tripduration,
-	        startDate: new Date(d.starttime),
-	        endDate: new Date(d.stoptime),
+	        startDate: startDate,
+	        endDate: endDate,
 	        startStation: +d["start station id"],
 	        endStation: +d["end station id"],
 	        bikeId: d.bikeid,
@@ -17161,13 +17168,12 @@
 	        var timeseriesArea = (0, _areaChart2.default)().x(function (d) {
 	            return scaleX(d.key);
 	        }).y1(function (d) {
-	            return scaleY(d.curr);
+	            return scaleY(+d.curr);
 	        }).y0(function (d) {
-	            return scaleY(d.prev);
+	            return scaleY(+d.prev);
 	        });
 	
 	        var breakdownGs = breakdown.selectAll("g").data(breakdownNest);
-	
 	        breakdownGs.exit().transition().remove();
 	        var paths = breakdownGs.enter().append("g").merge(breakdownGs).attr("class", function (d, i) {
 	            return breakdownAxis + d.key;
