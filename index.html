@@ -14,21 +14,17 @@
                             This project tries to explore the data of one randomly-choosen Hubway bike.
                             The data contains all the trips from 2016 for just one bike.
                             Everytime you refresh the page you will find a new randomly selected bike's data visualised.
-                            <br /><br />
-                            <span>
-                                If you find this bike to be interesting and would like to share the current page, you can definitely do that by clicking: <button class="btn" id="share">Share</button>.
-                                <br />
-                                Let me know if you do, because I would also like to find interesting bikes :)
-                                <br />
-                                Twitter: <a href="http://twitter.com/navarjun">@Navarjun</a>
-                            </span>
                         </p>
-
                     </div>
                     <div class="col-sm-6">
-                        <p style="text-align: center;">This bike did</p>
-                        <h1 id="total-trips">Loading Data…</h1>
-                        <p style="text-align: center;">trips in 2016</p>
+                        <p class="col-sm-12">
+                            If you find this bike to be interesting and would like to share the current page, you can definitely do that by clicking:
+                            <button class="btn" id="share">Share</button>.
+                            <br />
+                            Let me know if you do, because I would also like to find interesting bikes :)
+                            <br />
+                            Twitter: <a href="http://twitter.com/navarjun">@Navarjun</a>
+                        </p>
                     </div>
                 </div>
             </section>
@@ -40,6 +36,11 @@
                         <p class="col-sm-6">
                             Each arc in this arc-diagram is a representation of one trip taken by the bike. The height of the arc represents the duration of the trip, and beginning and ending points represent the municipality the bike went into.
                         </p>
+                        <div class="col-sm-6">
+                            <p style="text-align: center;">This bike did</p>
+                            <h1 id="total-trips">Loading Data…</h1>
+                            <p style="text-align: center;">trips in 2016</p>
+                        </div>
                         <svg id="municipality-svg"></svg>
                     </div>
                 </div>
